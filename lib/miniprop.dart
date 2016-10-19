@@ -1,4 +1,4 @@
-library fire.miniprop;
+library firefirestyle.miniprop;
 
 import 'dart:convert' as conv;
 
