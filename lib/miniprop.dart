@@ -5,6 +5,10 @@ import 'dart:convert' as conv;
 class MiniProp {
   Map<String, Object> _content;
 
+  MiniProp() {
+    _content= {};
+  }
+
   MiniProp.fromMap(Map<String, Object> content) {
     _content = content;
   }
@@ -26,6 +30,19 @@ class MiniProp {
       _content = {};
     }
   }
+
+  String toJson({errorIsThrow: false}) {
+    try {
+      return conv.JSON.encode(_content);
+    } catch(e){
+      if(errorIsThrow == true) {
+        throw e;
+      } else {
+        return conv.JSON.encode({});
+      }
+    }
+  }
+
 
   Object getPropObject(String category, String key, Object defaultValue) {
     var categoryContainer = {};
@@ -58,6 +75,9 @@ class MiniProp {
       categoryContainer = _content;
     } else {
       categoryContainer = _content[category];
+      if(categoryContainer == null) {
+        categoryContainer = _content[category] = {};
+      }
     }
     categoryContainer[key] = defaultValue;
   }
