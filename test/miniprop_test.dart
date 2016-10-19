@@ -1,6 +1,5 @@
 import 'package:test/test.dart' as unit;
-import 'package:fire.miniprop/miniprop.dart' as miniprop;
-import 'dart:async';
+import 'package:firefirestyle.miniprop/miniprop.dart' as miniprop;
 
 void main() {
   unit.test("basic a", () {
