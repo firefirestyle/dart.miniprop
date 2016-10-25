@@ -123,4 +123,22 @@ class MiniProp {
   void setPropNum(String category, String key, num value) {
     setPropObject(category, key, value);
   }
+
+  void setPropStringList(String category, String key, List<String> value) {
+    setPropObject(category, key, value);
+  }
+
+  List<String> getPropStringList(String category, String key, List<String> defaultValue) {
+    var v = getPropObject(category, key, defaultValue);
+    if (v is List) {
+      for(var vv in v) {
+        if(!(vv is String)) {
+          return defaultValue;
+        }
+      }
+      return v;
+    } else {
+      return defaultValue;
+    }
+  }
 }
