@@ -14,6 +14,9 @@ class MiniProp {
   }
 
   factory MiniProp.fromByte(List<int> bytes, {errorIsThrow: false}) {
+    if(bytes == null) {
+      bytes = [];
+    }
     var jsonText = conv.UTF8.decode(bytes, allowMalformed: true);
     return new MiniProp.fromString(jsonText, errorIsThrow: errorIsThrow);
   }
